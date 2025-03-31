@@ -20,7 +20,7 @@ jobs:
           node-version: 20
 
       - name: Install dependencies
-        run: npm run install
+        run: npm install
         env:
           NODE_OPTIONS: --openssl-legacy-provider # Required for some Next.js 15 features [[6]]
 
