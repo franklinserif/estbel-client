@@ -22,24 +22,25 @@ jobs:
       - name: Install dependencies
         run: npm install
         env:
-          NODE_OPTIONS: --openssl-legacy-provider # Required for some Next.js 15 features [[6]]
+          NODE_OPTIONS: --openssl-legacy-provider # Required for Next.js 15 [[6]]
 
       - name: Run ESLint and TypeScript checks
-        run: npm run lint
-        # Uses Next.js built-in linting with security-focused rules [[4]][[6]]
+        run: npm run lint # Uses Next.js built-in linting [[4]]
 
       - name: Check for changes
         id: changes
         run: |
           if git diff --quiet; then
-                  echo "has_changes=false" >> $GITHUB_ENV
+            echo "has_changes=false" >> $GITHUB_ENV
           else
-                  echo "has_changes=true" >> $GITHUB_ENV
+            echo "has_changes=true" >> $GITHUB_ENV
           fi
-      - name: Get list  of change files
+
+      - name: Get list of changed files
         id: changes_files
+        if: env.has_changes == 'true' # Conditional execution [[7]]
         run: |
-          files=$(git diff --name=only)
+          files=$(git diff --name-only) # Correct syntax [[5]][[7]]
           echo "::set-output name=files::$files"
 
       - name: Commit changes using Verified Commit action
@@ -50,4 +51,4 @@ jobs:
         with:
           commit-message: "fix: auto-format code with Prettier and ESLint"
           ref: refs/heads/develop
-          files: ${{ steps.changed_files.outputs.files }}
+          files: ${{ steps.changes_files.outputs.files }} # Corrected ID reference
