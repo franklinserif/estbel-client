@@ -8,6 +8,7 @@ on:
 
 jobs:
   verify-and-secure:
+    name: verify-and-secure
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
