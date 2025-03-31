@@ -27,6 +27,9 @@ jobs:
       - name: Run ESLint and TypeScript checks
         run: npm run lint # Uses Next.js built-in linting [[4]]
 
+      - name: Run Prettier
+        run: npx prettier --write .
+
       - name: Run tests
         run: npm run test
 
