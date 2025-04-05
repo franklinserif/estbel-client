@@ -99,6 +99,7 @@ const config: Config = {
   moduleNameMapper: {
     '^@/app/(.*)$': '<rootDir>/app/$1',
     '^@/components/(.*)$': '<rootDir>/components/$1',
+    '^@/ui/(.*)$': '<rootDir>/components/ui/$1',
     '^@/constants/(.*)$': '<rootDir>/constants/$1',
     '^@/interfaces/(.*)$': '<rootDir>/interfaces/$1',
     '^@/lib/(.*)$': '<rootDir>/lib/$1',
