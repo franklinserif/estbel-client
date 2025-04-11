@@ -2,7 +2,6 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import * as z from "zod";
 import { Button } from "@/components/ui/Button";
 import {
   Form,
@@ -17,15 +16,16 @@ import { formSignInSchema } from "@/schemas/auth";
 import { SIGNIN_DEFAULT_VALUES } from "@/app/constants/auth";
 import { Separator } from "@radix-ui/react-separator";
 import Link from "next/link";
+import {  TSignInSchema } from "@/interfaces/auth";
 
 
 export default function SignInPage() {
-  const form = useForm<z.infer<typeof formSignInSchema>>({
+  const form = useForm<TSignInSchema>({
     resolver: zodResolver(formSignInSchema),
     defaultValues: SIGNIN_DEFAULT_VALUES
   });
 
-  function onSubmit(values: z.infer<typeof formSignInSchema>) {
+  function onSubmit(values: TSignInSchema) {
     // Handle form submission here
     console.log(values);
   }
