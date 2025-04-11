@@ -27,7 +27,7 @@ export default function ForgotPasswordPage() {
       router.push('/auth/change-password');
     } catch (error) {
       form.setError('root', {
-        message: 'Ha ocurrido un error restableciendo tu contraseña, intenta de nuevo.',
+        message: 'Se ha producido un error al reiniciar su contraseña, vuelva a intentarlo.',
       });
     }
   }
@@ -38,7 +38,7 @@ export default function ForgotPasswordPage() {
         <div className="text-center">
           <h1 className="text-2xl font-bold">Restablece tu contraseña</h1>
           <p className="mt-2 text-sm text-gray-600">
-          ingresa tu email, y te enviaremos una contraseña provisional
+           Introduce tu e-mail y te enviaremos una contraseña temporal.
           </p>
         </div>
         <Form {...form}>
@@ -52,7 +52,7 @@ export default function ForgotPasswordPage() {
                   <FormControl>
                     <Input
                       type="email"
-                      placeholder="Ingresa tu email"
+                      placeholder="Introduzca su email"
                       {...field}
                     />
                   </FormControl>
