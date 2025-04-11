@@ -36,7 +36,7 @@ export default function SignInPage() {
         <div className="text-center">
           <h1 className="text-2xl font-bold">Bienvenido a Estbel</h1>
           <p className="mt-2 text-sm text-gray-600">
-            Ingresa tus credenciales para acceder a tu cuenta
+            Introduzca sus credenciales de acceso a su cuenta.
           </p>
         </div>
         <Form {...form}>
@@ -48,7 +48,7 @@ export default function SignInPage() {
                 <FormItem>
                   <FormLabel>Email</FormLabel>
                   <FormControl>
-                    <Input type="email" placeholder="Ingresa tu email" {...field}/>
+                    <Input type="email" placeholder="Introduzca su email" {...field}/>
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -63,7 +63,7 @@ export default function SignInPage() {
                   <FormControl>
                     <Input
                       type="password"
-                      placeholder="Ingresa tu contraseña"
+                      placeholder="Introduzca su contraseña"
                       {...field}
                     />
                   </FormControl>
