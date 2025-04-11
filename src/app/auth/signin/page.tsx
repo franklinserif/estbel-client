@@ -3,7 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/Button";
 import {
   Form,
   FormControl,
@@ -11,28 +11,21 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
+} from "@/components/ui/Form";
+import { Input } from "@/components/Input";
+import { formSignInSchema } from "@/schemas/auth";
+import { SIGNIN_DEFAULT_VALUES } from "@/app/constants/auth";
+import { Separator } from "@radix-ui/react-separator";
+import Link from "next/link";
 
-const formSchema = z.object({
-  email: z.string().email({
-    message: "Please enter a valid email address.",
-  }),
-  password: z.string().min(6, {
-    message: "Password must be at least 6 characters.",
-  }),
-});
 
 export default function SignInPage() {
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      email: "",
-      password: "",
-    },
+  const form = useForm<z.infer<typeof formSignInSchema>>({
+    resolver: zodResolver(formSignInSchema),
+    defaultValues: SIGNIN_DEFAULT_VALUES
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  function onSubmit(values: z.infer<typeof formSignInSchema>) {
     // Handle form submission here
     console.log(values);
   }
@@ -41,9 +34,9 @@ export default function SignInPage() {
     <div className="flex min-h-screen items-center justify-center">
       <div className="w-full max-w-md space-y-8 rounded-lg border p-6 shadow-lg">
         <div className="text-center">
-          <h1 className="text-2xl font-bold">Sign In</h1>
+          <h1 className="text-2xl font-bold">Bienvenido a Estbel</h1>
           <p className="mt-2 text-sm text-gray-600">
-            Enter your credentials to access your account
+            Ingresa tus credenciales para acceder a tu cuenta
           </p>
         </div>
         <Form {...form}>
@@ -55,7 +48,7 @@ export default function SignInPage() {
                 <FormItem>
                   <FormLabel>Email</FormLabel>
                   <FormControl>
-                    <Input placeholder="Enter your email" {...field} />
+                    <Input type="email" placeholder="Ingresa tu email" {...field}/>
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -66,11 +59,11 @@ export default function SignInPage() {
               name="password"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Password</FormLabel>
+                  <FormLabel>Contraseña</FormLabel>
                   <FormControl>
                     <Input
                       type="password"
-                      placeholder="Enter your password"
+                      placeholder="Ingresa tu contraseña"
                       {...field}
                     />
                   </FormControl>
@@ -78,8 +71,14 @@ export default function SignInPage() {
                 </FormItem>
               )}
             />
+            <Separator orientation="horizontal" className="my-4 h-0.5 bg-gray-100" />
+            <p className="text-xs text-right">
+             <Link href="/auth/forgot-password" className="hover:underline">
+              Olvidaste tu contraseña 
+             </Link> 
+            </p>
             <Button type="submit" className="w-full">
-              Sign In
+              Login
             </Button>
           </form>
         </Form>
