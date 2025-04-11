@@ -10,3 +10,19 @@ const password = z.string()
   .regex(/[^a-zA-Z0-9]/, { message: 'Password must contain at least one special character (e.g., !@#$%^&*)' });
 
 export const formSignInSchema = z.object({email, password})
+
+export const forgotPasswordSchema = z.object({
+ email
+});
+
+export const formChangePasswordSchema = z.object({
+  provisionalPassword: z.string().min(1, "La contraseña provisional es requerida"),
+  newPassword: z.string().min(8, "La contraseña debe tener al menos 8 caracteres"),
+});
+
+export type TChangePasswordSchema = z.infer<typeof formChangePasswordSchema>;
+
+export const CHANGE_PASSWORD_DEFAULT_VALUES: TChangePasswordSchema = {
+  provisionalPassword: "",
+  newPassword: "",
+};
