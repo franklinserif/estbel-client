@@ -22,7 +22,4 @@ export const formChangePasswordSchema = z.object({
 
 export type TChangePasswordSchema = z.infer<typeof formChangePasswordSchema>;
 
-export const CHANGE_PASSWORD_DEFAULT_VALUES: TChangePasswordSchema = {
-  provisionalPassword: "",
-  newPassword: "",
-};
+
