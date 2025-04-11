@@ -12,8 +12,9 @@ import {
   FormMessage,
 } from "@/components/ui/Form";
 import { Input } from "@/components/Input";
-import { formChangePasswordSchema, CHANGE_PASSWORD_DEFAULT_VALUES } from "@/schemas/auth";
+import { formChangePasswordSchema } from "@/schemas/auth";
 import { TChangePasswordSchema } from "@/interfaces/auth";
+import { CHANGE_PASSWORD_DEFAULT_VALUES } from "@/app/constants/auth";
 
 export default function ChangePasswordPage() {
   const form = useForm<TChangePasswordSchema>({
@@ -32,7 +33,7 @@ export default function ChangePasswordPage() {
         <div className="text-center">
           <h1 className="text-2xl font-bold">Cambiar Contraseña</h1>
           <p className="mt-2 text-sm text-gray-600">
-            Ingresa tu contraseña provisional y tu nueva contraseña
+            Introduzca su contraseña temporaria y su nueva contraseña.
           </p>
         </div>
         <Form {...form}>
@@ -46,7 +47,7 @@ export default function ChangePasswordPage() {
                   <FormControl>
                     <Input
                       type="password"
-                      placeholder="Ingresa tu contraseña provisional"
+                      placeholder="Introduzca su contraseña provisional"
                       {...field}
                     />
                   </FormControl>
@@ -63,7 +64,7 @@ export default function ChangePasswordPage() {
                   <FormControl>
                     <Input
                       type="password"
-                      placeholder="Ingresa tu nueva contraseña"
+                      placeholder="Introduzca su nueva contraseña"
                       {...field}
                     />
                   </FormControl>
