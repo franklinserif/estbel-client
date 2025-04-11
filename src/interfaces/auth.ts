@@ -1,0 +1,10 @@
+import * as z from "zod";
+import { forgotPasswordSchema, formSignInSchema } from "@/schemas/auth";
+
+export type TSignInSchema = z.infer<typeof formSignInSchema>
+export type TForgotPassworSchema = z.infer<typeof forgotPasswordSchema>
+
+export interface TChangePasswordSchema {
+  provisionalPassword: string;
+  newPassword: string;
+}
